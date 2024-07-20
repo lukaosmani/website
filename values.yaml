@@ -1,0 +1,22 @@
+replicaCount: 1
+
+deployments:
+  - name: yellow
+    image: lukaosmani/website-yellow:v1.0.0
+    host: yellow.luka.com
+  - name: blue
+    image: lukaosmani/website-blue:v1.0.0
+    host: blue.luka.com
+  - name: green
+    image: lukaosmani/website-green:v1.0.0
+    host: green.luka.com
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  tls: []
