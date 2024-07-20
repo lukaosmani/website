@@ -3,12 +3,12 @@ entries:
   website:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-07-20T18:22:59.816440574+02:00"
+    created: "2024-07-20T18:24:42.582295471+02:00"
     description: A Helm chart for Kubernetes
-    digest: 51f6d6d2607f4e3a141796f753111efeba29fe6cccfe44549c5b105fef062f7b
+    digest: c841ca2bb9b942cfffcc921aa910ec5c6f61c65ea58f89445b5f2b516136000d
     name: website
     type: application
     urls:
     - https://raw.githubusercontent.com/lukaosmani/website/main/website-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-20T18:22:59.81606124+02:00"
+generated: "2024-07-20T18:24:42.582062554+02:00"
