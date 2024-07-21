@@ -2,6 +2,7 @@ replicaCount: 1
 image:
   tag: green
 color: green
+releaseName: green-website
 service:
   type: ClusterIP
   port: 80

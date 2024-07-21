@@ -2,6 +2,7 @@ replicaCount: 1
 image:
   tag: blue
 color: blue
+releaseName: blue-website
 service:
   type: ClusterIP
   port: 80
