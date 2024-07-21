@@ -1,24 +1,24 @@
-{{- if .Values.ingress.enabled -}}
+{{- if .Values.ingress.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Release.Name }}-ingress
+  name: {{ include "website.fullname" . }}-ingress
   annotations:
-    {{- range $key, $value := .Values.ingress.annotations }}
-      {{ $key }}: {{ $value | quote }}
-    {{- end }}
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    {{- range .Values.deployments }}
+    {{- range .Values.ingress.hosts }}
     - host: {{ .host }}
       http:
         paths:
-          - path: /
-            pathType: ImplementationSpecific
+          {{- range .paths }}
+          - path: {{ .path }}
+            pathType: {{ .pathType }}
             backend:
               service:
-                name: {{ $.Release.Name }}-{{ .name }}
+                name: {{ include "website.fullname" $ }}
                 port:
                   number: {{ $.Values.service.port }}
+          {{- end }}
     {{- end }}
 {{- end }}
