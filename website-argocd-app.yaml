@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: website-applicationset
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster: blue
+            path: blue
+            targetRevision: main
+          - cluster: green
+            path: green
+            targetRevision: main
+          - cluster: yellow
+            path: yellow
+            targetRevision: main
+  template:
+    metadata:
+      name: '{{cluster}}-website'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/lukaosmani/website.git'
+        targetRevision: '{{targetRevision}}'
+        path: '.'
+        helm:
+          valueFiles:
+            - '{{path}}/values.yaml'
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: '{{cluster}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
