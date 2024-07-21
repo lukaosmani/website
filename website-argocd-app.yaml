@@ -7,30 +7,27 @@ spec:
   generators:
     - list:
         elements:
-          - cluster: blue
+          - name: blue
             path: blue
-            targetRevision: main
-          - cluster: green
+          - name: green
             path: green
-            targetRevision: main
-          - cluster: yellow
+          - name: yellow
             path: yellow
-            targetRevision: main
   template:
     metadata:
-      name: '{{cluster}}-website'
+      name: '{{name}}-website'
     spec:
       project: default
       source:
         repoURL: 'https://github.com/lukaosmani/website.git'
-        targetRevision: '{{targetRevision}}'
+        targetRevision: main
         path: '.'
         helm:
           valueFiles:
             - '{{path}}/values.yaml'
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: '{{cluster}}'
+        namespace: '{{name}}'
       syncPolicy:
         automated:
           prune: true
