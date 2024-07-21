@@ -1,0 +1,13 @@
+replicaCount: 1
+image:
+  tag: blue
+service:
+  type: ClusterIP
+  port: 80
+ingress:
+  enabled: true
+  hosts:
+    - host: blue.luka.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific

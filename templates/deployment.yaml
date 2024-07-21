@@ -1,23 +1,22 @@
-{{- range .Values.deployments }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ $.Release.Name }}-{{ .name }}
+  name: {{ .Release.Name }}
   labels:
-    app: {{ $.Release.Name }}-{{ .name }}
+    app: {{ .Release.Name }}
 spec:
-  replicas: {{ $.Values.replicaCount }}
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ $.Release.Name }}-{{ .name }}
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ $.Release.Name }}-{{ .name }}
+        app: {{ .Release.Name }}
     spec:
       containers:
-        - name: {{ .name }}
-          image: "{{ .image }}"
+        - name: {{ .Values.image.tag }}
+          image: "lukaosmani/website-{{ .Values.image.tag }}:v1.0.0"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -29,5 +28,3 @@ spec:
             httpGet:
               path: /
               port: 80
----
-{{- end }}
