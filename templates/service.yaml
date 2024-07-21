@@ -4,6 +4,7 @@ metadata:
   name: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
+    color: {{ .Values.color }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -11,3 +12,4 @@ spec:
       targetPort: 80
   selector:
     app: {{ .Release.Name }}
+    color: {{ .Values.color }}

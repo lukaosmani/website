@@ -1,6 +1,7 @@
 replicaCount: 1
 image:
   tag: blue
+color: blue
 service:
   type: ClusterIP
   port: 80

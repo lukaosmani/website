@@ -4,19 +4,22 @@ metadata:
   name: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
+    color: {{ .Values.color }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}
+      color: {{ .Values.color }}
   template:
     metadata:
       labels:
         app: {{ .Release.Name }}
+        color: {{ .Values.color }}
     spec:
       containers:
-        - name: {{ .Values.image.tag }}
-          image: "lukaosmani/website-{{ .Values.image.tag }}:v1.0.0"
+        - name: {{ .Values.color }}
+          image: "lukaosmani/website-{{ .Values.color }}:v1.0.0"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
