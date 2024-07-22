@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: yellow-website
+  name: {{ .Values.releaseName }}
   labels:
-    app: yellow-website
-    color: yellow
+    app: {{ .Values.releaseName }}
+    color: {{ .Values.color }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: yellow-website
-      color: yellow
+      app: {{ .Values.releaseName }}
+      color: {{ .Values.color }}
   template:
     metadata:
       labels:
-        app: yellow-website
-        color: yellow
+        app: {{ .Values.releaseName }}
+        color: {{ .Values.color }}
     spec:
       containers:
-        - name: yellow
-          image: "lukaosmani/website-yellow:v1.0.0"
+        - name: {{ .Values.color }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
