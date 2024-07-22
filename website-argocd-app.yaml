@@ -8,20 +8,11 @@ spec:
     - list:
         elements:
           - name: blue
-            image: lukaosmani/website-blue:v1.0.0
-            valuesFiles:
-              - values.yaml
-              - values-blue.yaml
+            additionalValuesFile: values-blue.yaml
           - name: green
-            image: lukaosmani/website-green:v1.0.0
-            valuesFiles:
-              - values.yaml
-              - values-green.yaml
+            additionalValuesFile: values-green.yaml
           - name: yellow
-            image: lukaosmani/website-yellow:v1.0.0
-            valuesFiles:
-              - values.yaml
-              - values-yellow.yaml
+            additionalValuesFile: values-yellow.yaml
   template:
     metadata:
       name: '{{name}}-website'
@@ -34,7 +25,7 @@ spec:
         helm:
           valueFiles:
             - values.yaml
-            - '{{valuesFiles}}'
+            - '{{additionalValuesFile}}'
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: '{{name}}'
