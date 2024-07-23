@@ -8,8 +8,8 @@ releaseName: green-website
 service:
   servicename: green-website-service
 
-#ingress:
-#  host: green.luka.com
-#  tls:
-#    enabled: false
+ingress:
+  host: green.luka.com
+  tls:
+    enabled: false
 #    secretName: green-secret
