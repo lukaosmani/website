@@ -1,8 +1,6 @@
 replicaCount: 1
 
 image:
-  repository: lukaosmani/website
-  tag: latest
   pullPolicy: IfNotPresent
 
 service:
@@ -12,9 +10,5 @@ service:
 ingress:
   enabled: true
   annotations: {}
-  hosts:
-    - host: chart-example.local
-      paths: 
-        - path: /
-          pathType: ImplementationSpecific
+  pathType: Prefix
   tls: []

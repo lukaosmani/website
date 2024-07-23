@@ -1,5 +1,3 @@
-replicaCount: 1
-
 image:
   repository: lukaosmani/website-yellow
   tag: v1.0.0
@@ -8,15 +6,10 @@ color: yellow
 releaseName: yellow-website
 
 service:
-  type: ClusterIP
-  port: 80
   servicename: yellow-website-service
 
 ingress:
-  enabled: true
   host: yellow.luka.com
-  path: /
-  pathType: Prefix
   tls:
     enabled: false
     secretName: yellow-secret

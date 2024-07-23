@@ -1,5 +1,3 @@
-replicaCount: 1
-
 image:
   repository: lukaosmani/website-blue
   tag: v1.0.0
@@ -8,15 +6,10 @@ color: blue
 releaseName: blue-website
 
 service:
-  type: ClusterIP
-  port: 80
   servicename: blue-website-service
 
 ingress:
-  enabled: true
   host: blue.luka.com
-  path: /
-  pathType: Prefix
   tls:
     enabled: false
     secretName: blue-secret

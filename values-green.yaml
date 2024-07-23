@@ -1,5 +1,3 @@
-replicaCount: 1
-
 image:
   repository: lukaosmani/website-green
   tag: v1.0.0
@@ -8,15 +6,10 @@ color: green
 releaseName: green-website
 
 service:
-  type: ClusterIP
-  port: 80
   servicename: green-website-service
 
 ingress:
-  enabled: true
   host: green.luka.com
-  path: /
-  pathType: Prefix
   tls:
     enabled: false
     secretName: green-secret
