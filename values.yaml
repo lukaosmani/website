@@ -1,9 +1,15 @@
 replicaCount: 1
 
-image:
-  repository: lukaosmani/website
-  tag: latest
-  pullPolicy: IfNotPresent
+deployments:
+  - name: yellow
+    image: lukaosmani/website-yellow:v1.0.0
+    host: yellow.luka.com
+  - name: blue
+    image: lukaosmani/website-blue:v1.0.0
+    host: blue.luka.com
+  - name: green
+    image: lukaosmani/website-green:v1.0.0
+    host: green.luka.com
 
 service:
   type: ClusterIP
@@ -11,10 +17,6 @@ service:
 
 ingress:
   enabled: true
-  annotations: {}
-  hosts:
-    - host: chart-example.local
-      paths: 
-        - path: /
-          pathType: ImplementationSpecific
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
   tls: []

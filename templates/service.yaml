@@ -1,15 +1,16 @@
+{{- range .Values.deployments }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.service.servicename | default (printf "%s-service" .Values.releaseName) }}
+  name: {{ $.Release.Name }}-{{ .name }}
   labels:
-    app: {{ .Values.releaseName | default "default-release" }}
-    color: {{ .Values.color | default "default-color" }}
+    app: {{ $.Release.Name }}-{{ .name }}
 spec:
-  type: {{ .Values.service.type | default "ClusterIP" }}
+  type: {{ $.Values.service.type }}
   ports:
-    - port: {{ .Values.service.port | default 80 }}
+    - port: {{ $.Values.service.port }}
       targetPort: 80
   selector:
-    app: {{ .Values.releaseName | default "default-release" }}
-    color: {{ .Values.color | default "default-color" }}
+    app: {{ $.Release.Name }}-{{ .name }}
+---
+{{- end }}
