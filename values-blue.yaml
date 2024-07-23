@@ -8,8 +8,8 @@ releaseName: blue-website
 service:
   servicename: blue-website-service
 
-ingress:
-  host: blue.luka.com
-  tls:
-    enabled: false
-    secretName: blue-secret
+#ingress:
+#  host: blue.luka.com
+#  tls:
+#    enabled: false
+#    secretName: blue-secret

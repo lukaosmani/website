@@ -8,8 +8,8 @@ releaseName: yellow-website
 service:
   servicename: yellow-website-service
 
-ingress:
-  host: yellow.luka.com
-  tls:
-    enabled: false
-    secretName: yellow-secret
+#ingress:
+#  host: yellow.luka.com
+#  tls:
+#    enabled: false
+#    secretName: yellow-secret
