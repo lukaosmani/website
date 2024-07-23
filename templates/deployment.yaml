@@ -1,23 +1,25 @@
-{{- range .Values.deployments }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ $.Release.Name }}-{{ .name }}
+  name: {{ .Values.releaseName }}
   labels:
-    app: {{ $.Release.Name }}-{{ .name }}
+    app: {{ .Values.releaseName }}
+    color: {{ .Values.color }}
 spec:
-  replicas: {{ $.Values.replicaCount }}
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ $.Release.Name }}-{{ .name }}
+      app: {{ .Values.releaseName }}
+      color: {{ .Values.color }}
   template:
     metadata:
       labels:
-        app: {{ $.Release.Name }}-{{ .name }}
+        app: {{ .Values.releaseName }}
+        color: {{ .Values.color }}
     spec:
       containers:
-        - name: {{ .name }}
-          image: "{{ .image }}"
+        - name: {{ .Values.color }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -29,5 +31,3 @@ spec:
             httpGet:
               path: /
               port: 80
----
-{{- end }}
