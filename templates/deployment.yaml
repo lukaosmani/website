@@ -20,7 +20,7 @@ spec:
       containers:
         - name: {{ .Values.color }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 80
           livenessProbe:
