@@ -10,5 +10,3 @@ service:
 
 ingress:
   host: green.luka.com
-  tls:
-    enabled: false

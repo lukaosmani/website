@@ -10,5 +10,3 @@ service:
 
 ingress:
   host: yellow.luka.com
-  tls:
-    enabled: false

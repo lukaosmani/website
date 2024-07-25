@@ -17,10 +17,4 @@ spec:
                 name: {{ .Values.service.servicename | default (printf "%s-service" .Release.Name) }}
                 port:
                   number: {{ .Values.service.port | default 80 }}
-  {{- if .Values.ingress.tls.enabled }}
-  tls:
-    - hosts:
-        - {{ .Values.ingress.host }}
-      secretName: {{ .Values.ingress.tls.secretName | default (printf "%s-tls" .Release.Name) }}
-  {{- end }}
 {{- end }}
