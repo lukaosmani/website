@@ -9,4 +9,5 @@ service:
   servicename: green-website-service
 
 ingress:
+  enabled: true
   host: green.luka.com

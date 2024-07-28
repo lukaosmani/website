@@ -9,4 +9,5 @@ service:
   servicename: yellow-website-service
 
 ingress:
+  enabled: true
   host: yellow.luka.com

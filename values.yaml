@@ -1,13 +1,20 @@
 replicaCount: 1
 
 image:
+  repository: lukaosmani/website
+  tag: v1.0.0
   pullPolicy: IfNotPresent
 
 service:
+  servicename: default-service
   type: ClusterIP
   port: 80
 
 ingress:
-  enabled: true
+  enabled: false
   annotations: {}
+  host: example.com
   pathType: Prefix
+
+color: default-color
+releaseName: default-release

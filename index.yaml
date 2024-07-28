@@ -3,12 +3,12 @@ entries:
   website:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-07-28T12:08:28.249050645+02:00"
+    created: "2024-07-28T12:43:25.408602909+02:00"
     description: A Helm chart for Kubernetes
-    digest: 87e1dfc459542ef3fca41e4887bed312eba830ef2a6bbe4599eacb249ef25ffc
+    digest: 5e18e5d745d2094c2ce8bd5a735dc8c56edecb1ccef3ab41f8d1c590303a7d75
     name: website
     type: application
     urls:
     - website-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-28T12:08:28.248756436+02:00"
+generated: "2024-07-28T12:43:25.4082577+02:00"
