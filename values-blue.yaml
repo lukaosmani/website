@@ -12,4 +12,6 @@ ingress:
   host: blue.luka.com
   tls:
     enabled: false
-#    secretName: blue-secret
+
+pdb:
+  minAvailable: 1

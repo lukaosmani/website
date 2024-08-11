@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.releaseName }}
+  name: {{ .Values.releaseName | default .Release.Name .Values.color }}
   labels:
-    app: {{ .Values.releaseName }}
-    color: {{ .Values.color }}
+    app: {{ .Values.releaseName | default .Release.Name }}
+    color: {{ .Values.color | default "default-color" }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.replicaCount | default 1 }}
   selector:
     matchLabels:
-      app: {{ .Values.releaseName }}
-      color: {{ .Values.color }}
+      app: {{ .Values.releaseName | default .Release.Name }}
+      color: {{ .Values.color | default "default-color" }}
   template:
     metadata:
       labels:
-        app: {{ .Values.releaseName }}
-        color: {{ .Values.color }}
+        app: {{ .Values.releaseName | default .Release.Name }}
+        color: {{ .Values.color | default "default-color" }}
     spec:
       containers:
-        - name: {{ .Values.color }}
+        - name: {{ .Values.color | default "default-color" }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: IfNotPresent
           ports:

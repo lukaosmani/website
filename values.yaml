@@ -11,4 +11,17 @@ ingress:
   enabled: true
   annotations: {}
   pathType: Prefix
-  tls: []
+
+pdb:
+  minAvailable: 1
+
+deployments:
+  - name: yellow-website
+    namespace: yellow
+    minAvailable: 1
+  - name: green-website
+    namespace: green
+    minAvailable: 1
+  - name: blue-website
+    namespace: blue
+    minAvailable: 1

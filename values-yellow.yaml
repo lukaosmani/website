@@ -12,4 +12,6 @@ ingress:
   host: yellow.luka.com
   tls:
     enabled: false
-#    secretName: yellow-secret
+
+pdb:
+  minAvailable: 1
