@@ -1,15 +1,12 @@
-{{- range .Values.deployments }}
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: {{ .name }}-pdb
-  namespace: {{ .namespace }}
+  name: {{ .Release.Name }}-pdb
+  namespace: {{ .Release.Namespace }}
   labels:
-    app: {{ .name }}
+    app: {{ .Release.Name }}
 spec:
-  minAvailable: {{ .minAvailable }}
+  minAvailable: {{ .Values.pdb.minAvailable | default 1 }}
   selector:
     matchLabels:
-      app: {{ .name }}
----
-{{- end }}
+      app: {{ .Release.Name }}
